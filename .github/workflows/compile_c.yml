@@ -18,7 +18,7 @@ jobs:
           ls -a
       
       - name: Run C Code for Linux
-        run: ./01_C/code
+        run: ./code
                 
       - name: Install Mingw-w64
         run: sudo apt-get install mingw-w64
