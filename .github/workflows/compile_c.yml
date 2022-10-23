@@ -18,6 +18,12 @@ jobs:
       - name: Compile C Code for Windows 64-bit
         run: x86_64-w64-mingw32-gcc -Wall -Wextra -g -o 01_C/00_compile_me.c -o code.exe
         
+      - name: Compile C Code for Linux
+        run: gcc -Wall -Wextra -g 01_C/00_compile_me.c -o code
+        
+      - name: Run C Code for Linux
+        run: ./01_C/code
+        
       - name: Upload the EXE file to repo
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
