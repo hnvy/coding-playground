@@ -1,28 +1,25 @@
-// TITLE: 02_placeholders.c
-
-// We can use placeholders in order to "place" values in a string. Let's have a look:
-
-#include <stdio.h> // We are going to use the ~printf~ function, so therefore we need to include the ~stdio.h~ header.
+#include <stdio.h> // Same old, same old...
 
 int main()
 {
-	printf("Hello, here we have a number in the string format (so, really, it's not a number): 73498\n"); // The ~\n~ is simply telling the program to start a new line (this is called an escape sequence). There is a whole massive list of these escape sequences: ~\t~ (for a tab), ~\\~ (for a literal slash character)...
+	// It seems that, usually, we should declare the variables before we create any statements.
+	int digit1, digit2, total; // ~int~ is a special keyword which C reads. It stands for "integer". You can replace the words which follow with whatever you like.
+	float decimal; // ~float~ is another special word. It stands for floating-point. You can replace the word "decimal" with whatever you like.
 
-	printf("Woah, now we can use the placeholder print out an actual number: %d\n", 847562); // As can be seen, there is now a ~%d~ inside the double quotes. This is the placeholder. The number 847562 corresponds to that ~%d~.
+	/*
+	// We can declare many things at once:
+	int variable1, variable2, variable3, variable4, variable5; // All of these will be classed as integers.
+	*/
 
-	printf("Let's experiment with some of these placeholders, shall we?\n");
+	// Now, the stuff we declared above are all EMPTY! Let's give (i.e., assign) them some values. You must ALWAYS declare before assign.
 
-	printf("We can add many placeholders into one string, like so: (first number) %d - (second number) %d = (third number) %d\n", 10, 4, 6); // As can be seen, 10 corresponds to the first ~%d~, 4 corresponds to the second ~%d~, and finally, 6 corresponds to the third ~%d~. Cool, huh?
+	digit1 = 30;
+	digit2 = 326;
+	decimal = 23.827f; // Since this has a decimal point, it seems that people recommend that we add the letter ~f~ at the end.
 
-	printf("Interestingly, we can make C do the maths for us! Like so: %d - %d = %d", 10, 4, 10-4); // The last argument (i.e., 10-4) makes C actually place the result of 10-4.
+	total = digit1 * digit2; // Multiply the two digits.
 
-	printf("\n\n\n"); // Printing 3 new lines to leave some space.
-	
-	printf("There is a\nnew line going\nto be inserted\nright here!\n\n");
-
-	printf("We can place some %s", "dinosaurs"); // You guessed it! ~%s~ is just like ~%d~, but instead, it's for strings rather than digits. You can replace "dinosaurs" with any word you like!
-
-	return(0);
+	printf("Multiplying %d and %d will give us %.3f", digit1, digit2, total);
+	// Ta-daaa! We used the placeholders (which we learned about in the 02_placeholders.c lesson) to create a beautiful ~printf~ statement!
+	// ^ Note how we have this ~.3f~? Well, this is to tell C that we want the answer to 3 decimal places.
 }
-
-// ** TEST 2: Test time! Write a program which prints out the following: There are many numbers in life, some arer big (like 297563476) and others are small (such as 3). Use the correct placeholder for the numbers.
