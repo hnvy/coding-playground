@@ -13,9 +13,7 @@ jobs:
         uses: actions/checkout@v3
         
       - name: Compile C Code for Linux
-        run: |
-          gcc -Wall -Wextra -g 01_C/00_compile_me.c -o code
-          ls -a
+        run: gcc -Wall -Wextra -g 01_C/00_compile_me.c -o code
       
       - name: Run C Code for Linux
         run: ./code
