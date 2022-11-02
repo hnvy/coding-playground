@@ -1,0 +1,24 @@
+name: Compile C Code
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Install textstat
+        run: pip install textstat
+
+      - name: Run Python
+        run: python ./01_python/feyn_it_right.py > output.txt
+
+      - name: Upload the files to repo
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automatic commit
