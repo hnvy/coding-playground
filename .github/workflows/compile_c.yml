@@ -24,7 +24,7 @@ jobs:
       - name: Compile C Code for Windows 64-bit
         run: x86_64-w64-mingw32-gcc -Wall -Wextra -g -o code.exe 01_C/00_compile_me.c
 
-      - name: Upload the EXE file to repo
+      - name: Upload files to repo
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Automatic commit
