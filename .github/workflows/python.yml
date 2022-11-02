@@ -18,7 +18,7 @@ jobs:
       - name: Run Python code
         run: python ./02_python/code.py > python_output.txt
 
-      - name: Upload the files to repo
+      - name: Upload files to repo
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Automatic commit
