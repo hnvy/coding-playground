@@ -1,4 +1,4 @@
-name: Compile C Code
+name: Run Python code
 
 on:
   push:
