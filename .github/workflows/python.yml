@@ -16,7 +16,7 @@ jobs:
         run: pip install textstat
 
       - name: Run Python
-        run: python ./01_python/feyn_it_right.py > python_output.txt
+        run: python ./02_python/feyn_it_right.py > python_output.txt
 
       - name: Upload the files to repo
         uses: stefanzweifel/git-auto-commit-action@v4
