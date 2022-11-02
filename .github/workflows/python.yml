@@ -12,10 +12,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
-      - name: Install textstat
+      - name: Install required libraries
         run: pip install -r ./02_python/requirements.txt
 
-      - name: Run Python
+      - name: Run Python code
         run: python ./02_python/code.py > python_output.txt
 
       - name: Upload the files to repo
