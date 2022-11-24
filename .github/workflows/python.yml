@@ -14,6 +14,9 @@ jobs:
         
       - name: Install required libraries
         run: pip install -r ./02_python/requirements.txt
+      
+      - name: Convert to executable
+        run: pyinstaller --onefile -w ./02_python/code.py | ls
 
       - name: Run Python code
         run: python ./02_python/code.py > python_output.txt
