@@ -18,8 +18,8 @@ jobs:
       - name: Convert to executable
         run: pyinstaller --onefile -w ./02_python/code.py | ls
 
-      - name: Run Python code
-        run: python ./02_python/code.py > python_output.txt
+      #- name: Run Python code
+        #run: python ./02_python/code.py > python_output.txt
 
       - name: Upload files to repo
         uses: stefanzweifel/git-auto-commit-action@v4
