@@ -1,9 +1,7 @@
 name: Run Python code
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   python:
@@ -22,6 +20,7 @@ jobs:
         #run: python ./02_python/code.py > python_output.txt
 
       - name: Upload files to repo
+        if: always()
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Automatic commit
