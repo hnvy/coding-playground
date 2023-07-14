@@ -1,9 +1,7 @@
 name: Compile C Code
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   compile:
@@ -25,6 +23,7 @@ jobs:
         run: x86_64-w64-mingw32-gcc -Wall -Wextra -g -o c_code.exe 01_C/00_compile_me.c
 
       - name: Upload files to repo
+        if: always()
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Automatic commit
