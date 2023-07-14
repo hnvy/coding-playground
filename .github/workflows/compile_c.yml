@@ -20,7 +20,7 @@ jobs:
         run: sudo apt-get install mingw-w64
 
       - name: Compile C Code for Windows 64-bit
-        run: x86_64-w64-mingw32-gcc -Wall -Wextra -g -o c_code.exe 01_c/00_compile_me.c
+        run: x86_64-w64-mingw32-gcc -static-libgcc -Wall -Wextra -g -o c_code.exe 01_c/00_compile_me.c
 
       - name: Upload files to repo
         if: always()
