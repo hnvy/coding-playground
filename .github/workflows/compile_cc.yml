@@ -17,7 +17,7 @@ jobs:
         run: sudo apt-get install mingw-w64
 
       - name: Compile C Code for Windows 64-bit
-        run: x86_64-w64-mingw32-g++ -static-libstdc++ -Wall -Wextra -g -o c_code.exe 04_cc/00_compile_me.cc
+        run: x86_64-w64-mingw32-g++ -static -Wall -Wextra -g -o c_code.exe 04_cc/00_compile_me.cc
 
       - name: Upload files to repo
         if: always()
