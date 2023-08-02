@@ -10,8 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Compile C Code for Linux
-        run: g++ -Wall -Wextra -g 04_cc/00_compile_me.cc -o c_code
+      #- name: Compile C Code for Linux
+        #run: g++ -Wall -Wextra -g 04_cc/00_compile_me.cc -o c_code
 
       - name: Install Mingw-w64
         run: sudo apt-get install mingw-w64
