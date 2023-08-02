@@ -31,6 +31,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Download mingw64
+        run: curl -o mingw.zip https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-i686-posix-dwarf-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.7z
+
       #- name: Compile C Code for Linux
         #run: g++ -Wall -Wextra -g 04_cc/00_compile_me.cc -o c_code
 
