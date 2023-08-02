@@ -20,8 +20,8 @@ jobs:
         run: sudo apt-get install libsdl2-dev
       
       # This finds the location of /usr/include/SDL2
-      - name: Find the SDL 2 libraries
-        run: sudo find / -type d -name SDL2
+      #- name: Find the SDL 2 libraries
+      #  run: sudo find / -type d -name SDL2
 
       - name: List the content of /usr/include/SDL2
         run: sudo ls /usr/include/SDL2
