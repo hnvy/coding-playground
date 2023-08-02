@@ -1,26 +1,35 @@
 #include <SDL2/SDL.h>
+#include <iostream>
 
-int main(int argc, char* argv[]) {
-    SDL_Init(SDL_INIT_VIDEO);
+int main()
+{
+    if(SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
+        std::cout << "Failed to initialize the SDL2 library\n";
+        return -1;
+    }
 
-    SDL_Window* window = SDL_CreateWindow("Hello, World!", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    SDL_Window *window = SDL_CreateWindow("SDL2 Window",
+                                          SDL_WINDOWPOS_CENTERED,
+                                          SDL_WINDOWPOS_CENTERED,
+                                          680, 480,
+                                          0);
 
-    SDL_Surface* surface = SDL_LoadBMP("hello.bmp");
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
+    if(!window)
+    {
+        std::cout << "Failed to create window\n";
+        return -1;
+    }
 
-    SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, texture, NULL, NULL);
-    SDL_RenderPresent(renderer);
+    SDL_Surface *window_surface = SDL_GetWindowSurface(window);
 
-    SDL_Delay(3000);
+    if(!window_surface)
+    {
+        std::cout << "Failed to get the surface from the window\n";
+        return -1;
+    }
 
-    SDL_DestroyTexture(texture);
-    SDL_FreeSurface(surface);
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
+    SDL_UpdateWindowSurface(window);
 
-    SDL_Quit();
-
-    return 0;
+    SDL_Delay(5000);
 }
