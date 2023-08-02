@@ -18,6 +18,9 @@ jobs:
       
       - name: Install SDL2
         run: sudo apt-get install libsdl2-dev
+      
+      - name: Find the SDL 2 libraries
+        run: locate SDL.h
 
       - name: Compile C Code for Windows 64-bit
         run: x86_64-w64-mingw32-g++ -static -Wall -Wextra -g -o main.exe 04_cc/00_compile_me.cc -lSDL2
