@@ -13,15 +13,7 @@ jobs:
       run:
         shell: bash
 
-    steps:
-      - name: LS in windows
-        run: ls
-        
-      - name: Unzip mingw
-        run: |
-          cd libs
-          7z x mingw.z01
-          
+    steps:          
         
       - name: "Setup"
         run: |
@@ -33,6 +25,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
+      - name: Unzip mingw
+        run: |
+          cd libs
+          7z x mingw.z01
 
       #- name: Compile C Code for Linux
         #run: g++ -Wall -Wextra -g 04_cc/00_compile_me.cc -o c_code
