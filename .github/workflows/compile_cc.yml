@@ -34,9 +34,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Download mingw64
-        run: 
-
       #- name: Compile C Code for Linux
         #run: g++ -Wall -Wextra -g 04_cc/00_compile_me.cc -o c_code
 
