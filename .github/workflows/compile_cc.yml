@@ -29,7 +29,7 @@ jobs:
       - name: Unzip mingw
         run: |
           cd libs
-          7z x mingw.z01
+          7z x mingw.z01 mingw.zip
 
       #- name: Compile C Code for Linux
         #run: g++ -Wall -Wextra -g 04_cc/00_compile_me.cc -o c_code
