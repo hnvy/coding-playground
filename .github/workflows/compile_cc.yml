@@ -23,8 +23,8 @@ jobs:
       #- name: Find the SDL 2 libraries
       #  run: sudo find / -type d -name SDL2
 
-      - name: List the content of /usr/include/SDL2
-        run: sudo ls /usr/lib/SDL2
+      - name: List the content of /usr/lib/SDL2
+        run: sudo ls /usr/lib/
 
       - name: Compile Code for everyone
         run: |
