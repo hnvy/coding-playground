@@ -4,10 +4,23 @@ on:
   workflow_dispatch:
 
 jobs:
+  get-latest-mingw:
+    name: MinGW download
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Wget
+        run: wget -o
+        
   mingw64-gcc:
     name: MinGW GCC
 
-    runs-on: windows-2019
+    #runs-on: windows-2019
+    runs-on: windows-2022
 
     defaults:
       run:
