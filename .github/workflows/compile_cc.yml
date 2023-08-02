@@ -4,6 +4,20 @@ on:
   workflow_dispatch:
 
 jobs:
+  mingw64-gcc:
+    name: MinGW GCC
+
+    runs-on: windows-2019
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: "Setup"
+        run: |
+          gcc --version
+
   compile:
     runs-on: ubuntu-latest
     steps:
