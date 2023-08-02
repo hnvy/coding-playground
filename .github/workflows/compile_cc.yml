@@ -13,8 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Wget
-        run: wget -o
+      - name: Wget and unzip
+        run: |
+          wget -O libs/mingw.zip https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-i686-posix-dwarf-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.7z
+          7z x lib/mingw.zip -olibs/mingw
         
   mingw64-gcc:
     name: MinGW GCC
