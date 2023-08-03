@@ -5,31 +5,6 @@ on:
 
 jobs:
 
-  get-latest-mingw:
-    name: MinGW download
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Wget MinGW and unzip it. Also unzip SDL2.
-        run: |
-          wget -O libs/mingw.zip https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-i686-posix-dwarf-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.7z
-          7z x libs/mingw.zip -olibs/mingw
-      
-      - name: Copy SDL2/lib to mingw32/lib
-        run: cp -R libs/SDL2/SDL2-2.28.2/i686-w64-mingw32/lib/. libs/mingw/mingw32/i686-w64-mingw32/lib
-      
-      - name: Copy SDL2/include to mingw32/include
-        run: cp -R libs/SDL2/SDL2-2.28.2/i686-w64-mingw32/include/SDL2/. libs/mingw/mingw32/i686-w64-mingw32/include
-          
-      - name: List content of mingw32/lib
-        run: ls -la libs/mingw/mingw32/i686-w64-mingw32/lib
-
-      - name: List content of mingw32/include
-        run: ls -la libs/mingw/mingw32/i686-w64-mingw32/include
-
   
   mingw64-gcc:
     name: MinGW GCC
@@ -81,11 +56,39 @@ jobs:
         with:
           commit_message: Automatic commit
   
-  compile:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+  
+
+  # get-latest-mingw:
+    # name: MinGW download
+    # runs-on: ubuntu-latest
+    
+    # steps:
+      # - name: Checkout
+        # uses: actions/checkout@v3
+
+      # - name: Wget MinGW and unzip it. Also unzip SDL2.
+        # run: |
+          # wget -O libs/mingw.zip https://github.com/brechtsanders/winlibs_mingw/releases/download/13.2.0-16.0.6-11.0.0-ucrt-r1/winlibs-i686-posix-dwarf-gcc-13.2.0-llvm-16.0.6-mingw-w64ucrt-11.0.0-r1.7z
+          # 7z x libs/mingw.zip -olibs/mingw
+      
+      # - name: Copy SDL2/lib to mingw32/lib
+        # run: cp -R libs/SDL2/SDL2-2.28.2/i686-w64-mingw32/lib/. libs/mingw/mingw32/i686-w64-mingw32/lib
+      
+      # - name: Copy SDL2/include to mingw32/include
+        # run: cp -R libs/SDL2/SDL2-2.28.2/i686-w64-mingw32/include/SDL2/. libs/mingw/mingw32/i686-w64-mingw32/include
+          
+      # - name: List content of mingw32/lib
+        # run: ls -la libs/mingw/mingw32/i686-w64-mingw32/lib
+
+      # - name: List content of mingw32/include
+        # run: ls -la libs/mingw/mingw32/i686-w64-mingw32/include
+
+
+  # compile:
+    # runs-on: ubuntu-latest
+    # steps:
+      # - name: Checkout
+        # uses: actions/checkout@v3
 
       #- name: Compile C Code for Linux
         #run: g++ -Wall -Wextra -g 04_cc/00_compile_me.cc -o c_code
@@ -103,14 +106,14 @@ jobs:
       #- name: Extract SDL2 for Windows
       #  run: 7z x libs/SDL2-devel-2.28.2-mingw.zip -olibs/SDL2
 
-      - name: Compile Code for everyone
-        run: |
-          x86_64-w64-mingw32-g++ -static -Wall -Wextra -g -o main.exe -I./SDL2-2.28.1/x86_64-w64-mingw32/include 04_cc/00_compile_me.cc -L./SDL2-2.28.1/x86_64-w64-mingw32/lib -lSDL2
-          gcc main 00_compile_me.cc -g -lSDL2
-        #run: x86_64-w64-mingw32-g++ -static -Wall -Wextra -g -o main.exe 04_cc/00_compile_me.cc
+      # - name: Compile Code for everyone
+        # run: |
+          # x86_64-w64-mingw32-g++ -static -Wall -Wextra -g -o main.exe -I./SDL2-2.28.1/x86_64-w64-mingw32/include 04_cc/00_compile_me.cc -L./SDL2-2.28.1/x86_64-w64-mingw32/lib -lSDL2
+          # gcc main 00_compile_me.cc -g -lSDL2
+        # run: x86_64-w64-mingw32-g++ -static -Wall -Wextra -g -o main.exe 04_cc/00_compile_me.cc
 
-      - name: Upload files to repo
-        if: always()
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Automatic commit
+      # - name: Upload files to repo
+        # if: always()
+        # uses: stefanzweifel/git-auto-commit-action@v4
+        # with:
+          # commit_message: Automatic commit
