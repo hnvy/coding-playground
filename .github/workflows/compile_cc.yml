@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
 
 jobs:
+
   get-latest-mingw:
     name: MinGW download
-    
     runs-on: ubuntu-latest
     
     steps:
@@ -33,9 +33,9 @@ jobs:
   
   mingw64-gcc:
     name: MinGW GCC
-
     runs-on: windows-2019
     #runs-on: windows-2022
+    needs: get-latest-mingw
 
     defaults:
       run:
