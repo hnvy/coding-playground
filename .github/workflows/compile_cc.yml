@@ -45,7 +45,8 @@ jobs:
         
       - name: Compile for Windows
         shell: pwsh
-        run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -L.\libs\mingw\mingw32\bin -lmingw32 -lsdl2main -lsdl2 -static-libgcc -static-libstdc++
+        run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -L.\libs\mingw\mingw32\bin -lmingw32 -lsdl2main -lsdl2 -static -static-libgcc -static-libstdc++
+        
         #run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -lmingw32 -lsdl2main -lsdl2 -static -static-libgcc -static-libstdc++
 
       - name: Delete mingw
