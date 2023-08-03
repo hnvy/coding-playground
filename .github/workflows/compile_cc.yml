@@ -70,7 +70,7 @@ jobs:
         
       - name: Compile for Windows
         shell: pwsh
-        run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -static -static-libgcc -static-libstdc++ -lmingw32 -lsdl2main -lsdl2
+        run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -lmingw32 -lsdl2main -lsdl2 -static -static-libgcc -static-libstdc++
 
       - name: Delete mingw
         run: rm -rf libs/mingw libs/mingw.zip
