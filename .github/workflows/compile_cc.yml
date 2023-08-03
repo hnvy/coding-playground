@@ -47,7 +47,7 @@ jobs:
         run: ls -la libs/mingw/mingw32
         
       - name: Compile for Windows
-        shell: pwsh
+        shell: cmd
         run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -Ilibs\mingw\mingw32\i686-w64-mingw32\include -L\libs\mingw\mingw32\lib\ -w -Wl,-subsystem,windows -lmingw32 -lsdl2main -lsdl2 -static -static-libgcc -static-libstdc++
         
         #run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -static -lmingw32 -lsdl2main -lsdl2 -lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid -static-libgcc -static-libstdc++
