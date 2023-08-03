@@ -50,7 +50,7 @@ jobs:
           pwd
           dir
           ls -la
-          libs/mingw/mingw32/g++ -o myprogram.exe 04_cc/00_compile_me.cc -lmingw32 -lSDLmain -lSDL
+          ./libs/mingw/mingw32/g++ -o myprogram.exe 04_cc/00_compile_me.cc -lmingw32 -lSDLmain -lSDL
           rm -rf libs/mingw
           
 
