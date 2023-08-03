@@ -73,7 +73,7 @@ jobs:
         run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -lmingw32 -lsdl2main -lsdl2
 
       - name: Delete mingw
-        run: rm -rf libs/mingw
+        run: rm -rf libs/mingw libs/mingw.zip
           
       - name: Upload files to repo
         if: always()
