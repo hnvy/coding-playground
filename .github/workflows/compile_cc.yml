@@ -69,7 +69,8 @@ jobs:
         run: ls -la libs/mingw/mingw32
         
       - name: Compile for Windows
-        run: ./libs/mingw/mingw32/g++.exe -o myprogram.exe 04_cc/00_compile_me.cc -lmingw32 -lSDLmain -lSDL
+        shell: pwsh
+        run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -lmingw32 -lSDLmain -lSDL
 
       - name: Delete mingw
         run: rm -rf libs/mingw
