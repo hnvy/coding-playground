@@ -48,9 +48,9 @@ jobs:
           pwd
           dir
           ls -la
-
-          sudo rm -rf libs/mingw
-# g++ -o myprogram.exe 04_cc/00_compile_me.cc -lmingw32 -lSDLmain -lSDL
+          g++ -o myprogram.exe 04_cc/00_compile_me.cc -lmingw32 -lSDLmain -lSDL
+          rm -rf libs/mingw
+          
 
       - name: Upload files to repo
         if: always()
