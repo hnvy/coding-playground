@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
 		SDL_RenderCopy(renderer, lettuce_tex, NULL, NULL);
 		SDL_RenderPresent(renderer);
 
-		SDL_Delay(20); // Delay loop
+		SDL_Delay(500); // Delay loop
 	}
 
 	SDL_DestroyTexture(lettuce_tex);
