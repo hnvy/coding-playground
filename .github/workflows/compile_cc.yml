@@ -47,7 +47,7 @@ jobs:
         shell: pwsh
         run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -L\libs\mingw\mingw32\lib -lmingw32 -lsdl2main -lsdl2 -static -static-libgcc -static-libstdc++
         
-        #run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -lmingw32 -lsdl2main -lsdl2 -static -static-libgcc -static-libstdc++
+        #run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -lmingw32 -lsdl2main -lsdl2 -lm -ldinput8 -ldxguid -ldxerr8 -luser32 -lgdi32 -lwinmm -limm32 -lole32 -loleaut32 -lshell32 -lversion -luuid -static -static-libgcc -static-libstdc++
 
       - name: Delete mingw
         run: rm -rf libs/mingw libs/mingw.zip
