@@ -46,7 +46,7 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Compile for Windows
-        run: "libs\mingw\mingw32\g++.exe" -o myprogram.exe 04_cc\00_compile_me.cc -lmingw32 -lSDLmain -lSDL
+        run: libs/mingw/mingw32/g++.exe -o myprogram.exe 04_cc/00_compile_me.cc -lmingw32 -lSDLmain -lSDL
         shell: cmd
       
       - name: Delete mingw
