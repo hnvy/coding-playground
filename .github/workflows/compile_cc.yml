@@ -29,8 +29,7 @@ jobs:
 
       - name: List content of mingw32/include
         run: ls -la libs/mingw/mingw32/i686-w64-mingw32/include
-        
-#ls -la libs/mingw/mingw32/i686-w64-mingw32/lib
+
   
   mingw64-gcc:
     name: MinGW GCC
@@ -48,8 +47,14 @@ jobs:
         run: |
           dir
           ls -la
+          g++ -o myprogram.exe 04_cc/00_compile_me.cc -lmingw32 -lSDLmain -lSDL
+          sudo rm -rf libs/mingw
           
-
+      - name: Upload files to repo
+        if: always()
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Automatic commit
   compile:
     runs-on: ubuntu-latest
     steps:
