@@ -46,6 +46,26 @@ jobs:
       - name: ls
         run: ls -la libs/mingw/mingw32
         
+        # After a successful compilation, you may get an error that says:
+        # "The code execution cannot proceed because XYZ.dll was not found"
+        # To solve this error, simply download MinGW from the link above, and
+        # Navigate to mingw32\i686-w64-mingw32\bin
+        # In that bin folder, you will find the XYZ.dll
+        # Simply copy that over to the same directory as the executable's directory.
+        # Now, repeat the steps above for the rest of the missing libraries.
+        # 
+        # The reason for why we should not use the -static flag is because it will give
+        # a lot of compilation errors, which I was not able to solve. Here is an example of an error:
+        # undefined reference to `_imp__CoTaskMemFree@4'
+        # This seems to be a popular problem...
+        #
+        # Sometimes, you may use an SDL2 header (for example, SDL2_image). The compiler will say that this is not found:
+        # undefined reference to `IMG_Quit'
+        # To solve this issue, you need to install the development libraries for SDL_image (or whatever package).
+        # In our case, this will be https://github.com/libsdl-org/SDL_image/releases
+        # Now, you need to copy the header files from SDL2_image-2.6.3/i686-w64-mingw32/include/ to SDL2/SDL2-2.28.2/i686-w64-mingw32/include/SDL2/
+        # Also, copy the files from SDL2_image-2.6.3/i686-w64-mingw32/lib/ to SDL2/SDL2-2.28.2/i686-w64-mingw32/include/lib/
+        # Finally, do not forget to put the SDL2_image.dll into the same directory as your executable!
       - name: Compile for Windows
         shell: cmd
         run: .\libs\mingw\mingw32\bin\g++.exe -o myprogram.exe 04_cc\00_compile_me.cc -I\libs\mingw\mingw32\i686-w64-mingw32\include -L\libs\mingw\mingw32\lib\ -w -Wl,-subsystem,windows -lmingw32 -lsdl2main -lsdl2 -lSDL2_image -static-libgcc -static-libstdc++
