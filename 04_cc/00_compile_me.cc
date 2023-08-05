@@ -1,64 +1,33 @@
 #include <iostream>
-#include "SDL.h"
-#include "SDL_image.h"
+#include <windows.h>
+#include <conio.h>
 
-int main(int argc, char* argv[]) {
-	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0) {
-		std::cout << "Error SDL2 Initialization : " << SDL_GetError();
-		return 1;
-	}
-		
-	if (IMG_Init(IMG_INIT_PNG) == 0) {
-		std::cout << "Error SDL2_image Initialization";
-		return 2;
-	}
+int main()
+{
+    HWND hwnd = GetDesktopWindow();
+    HDC hdc = GetDC(hwnd);
+    int x = 100, y = 100; // Set the position of the text
+    bool blink = true;
 
-	SDL_Window* window = SDL_CreateWindow("First program", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, SDL_WINDOW_OPENGL);
-	if (window == NULL) {
-		std::cout << "Error window creation";
-		return 3;
-	}
+    while (true)
+    {
+        if (blink)
+        {
+            TextOut(hdc, x, y, "Blinking text!", 14); // Display the text
+        }
+        else
+        {
+            Rectangle(hdc, x - 5, y - 5, x + 125, y + 25); // Erase the text using a rectangle
+        }
+        blink = !blink;
+        Sleep(500); // Wait for 500 milliseconds
+        if (_kbhit()) // Check if a key has been pressed
+        {
+            break; // Exit the loop if a key has been pressed
+        }
+    }
 
-	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-	if (renderer == NULL) {
-		std::cout << "Error renderer creation";
-		return 4;
-	}
-
-	SDL_Surface* lettuce_sur = IMG_Load("dot.bmp");
-	if (lettuce_sur == NULL) {
-		std::cout << "Error loading image: " << IMG_GetError();
-		return 5;
-	}
-
-	SDL_Texture* lettuce_tex = SDL_CreateTextureFromSurface(renderer, lettuce_sur);
-	if (lettuce_tex == NULL) {
-		std::cout << "Error creating texture";
-		return 6;
-	}
-
-	SDL_FreeSurface(lettuce_sur);
-
-	while (true) {
-		SDL_Event e;
-		if (SDL_PollEvent(&e)) {
-			if (e.type == SDL_QUIT) {
-				break;
-			}
-		}
-
-		SDL_RenderClear(renderer);
-		SDL_RenderCopy(renderer, lettuce_tex, NULL, NULL);
-		SDL_RenderPresent(renderer);
-
-		SDL_Delay(500); // Delay loop
-	}
-
-	SDL_DestroyTexture(lettuce_tex);
-	SDL_DestroyRenderer(renderer);
-	SDL_DestroyWindow(window);
-	IMG_Quit();
-	SDL_Quit();
-
-	return 0;
+    ReleaseDC(hwnd, hdc);
+    return 0;
 }
+
