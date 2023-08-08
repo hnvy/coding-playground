@@ -1,4 +1,4 @@
-name: Compile C++ Code
+name: Compile C++ Code for Windows
 
 on:
   workflow_dispatch:
